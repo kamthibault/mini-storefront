@@ -12,6 +12,10 @@ export default function ProductBrowser() {
         .then(res => res.json())
         .then(setProducts);
     }, []);
+
+    const addToCart = (product) => {
+        readSegmentCacheEntry(prev => [...prev, product]);   
+    };
     
 
     return (
@@ -24,6 +28,18 @@ export default function ProductBrowser() {
                     </li>
                 ))}
             </ul>
+            <h3>Cart</h3>
+            {Carter_One.length == 0 ? (
+                <p>No items in cart.</p>
+            ) :(
+                <ul>
+                    {cart.map((item,index) =>(
+                    <li key={index}>
+                        {item.name} - ${item.price}
+                    </li>
+                ))}
+                </ul>
+            )}
         </div>
     );
 }
