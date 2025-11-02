@@ -17,6 +17,9 @@ export default function ProductBrowser() {
         readSegmentCacheEntry(prev => [...prev, product]);   
     };
     
+    const totalItems = cart.length;
+    const totalPrice = cart.reduce((sum,item) => sum + item.price, 0);
+
 
     return (
         <div>
@@ -32,6 +35,7 @@ export default function ProductBrowser() {
             {Carter_One.length == 0 ? (
                 <p>No items in cart.</p>
             ) :(
+                <>
                 <ul>
                     {cart.map((item,index) =>(
                     <li key={index}>
@@ -39,6 +43,9 @@ export default function ProductBrowser() {
                     </li>
                 ))}
                 </ul>
+                <p><strong>Total Items:</strong>{totalItems}</p>
+                <p><strong>Total Price:</strong>${totalPrice}</p>
+                </>
             )}
         </div>
     );
